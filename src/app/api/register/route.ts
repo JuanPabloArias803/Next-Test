@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(req:NextRequest) {
     try {
         const { userEmail, userUsername,userPassword,userName,userPhone } = await req.json();
-        const endpoint = 'http://192.168.88.39:7000/auth/signup';
+        const endpoint = 'https://api-coders-advanced-route-production.up.railway.app/auth/signup';
         const options = {
             method: 'POST',
             headers: {
