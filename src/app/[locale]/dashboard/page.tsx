@@ -43,17 +43,17 @@ export default function Dashboard() {
     }, [userAuth.isLoggedIn]);
 
     return (
-        <div>
+        <Box component='div' sx={{display:'flex',flexDirection:'column',gap:'10px',alignItems:'center'}}>
             <h1>{translate("title")}</h1>
-            <Button onClick={()=>{resetAuth()}}>cerrar sesion</Button>
+            <Button variant='outlined' onClick={()=>{resetAuth()}}>{translate("logoutButton")}</Button>
             <Box component="span" sx={{display:"flex",gap:"10px", flexWrap:"wrap", justifyContent:"center"}}>
             {data.map((item:IProduct)=>{
                 return (
-                <ProductCard key={item.id} description={item.description} category={item.category} title={item.title} imageUrl={item.image}></ProductCard>
+                <ProductCard key={item.id} id={item.id} description={item.description} category={item.category} title={item.title} imageUrl={item.image}></ProductCard>
                 );
             })}
             </Box>
-        </div>
+        </Box>
     );
 }
 

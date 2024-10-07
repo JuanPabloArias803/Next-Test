@@ -22,13 +22,13 @@ export default function Home() {
     }, [userAuth.isLoggedIn]);
 
   return (
-    <div>
+    <Box component="div" sx={{width:'100%', display:'flex',flexDirection:'column', alignItems:'center'}}>
       <h1>{translate("title")}</h1>
       <LoginForm/>
       <Box component="span">
                 <p>{translate("registerText")}</p>
                 <Button variant="outlined" onClick={()=>{router.push(`/${locale}/register`);}}>{translate("registerButton")}</Button>
             </Box>
-    </div>
+    </Box>
   );
 }

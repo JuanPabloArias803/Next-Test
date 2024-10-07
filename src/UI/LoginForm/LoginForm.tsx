@@ -39,7 +39,7 @@ export default function LoginForm() {
 
     return (
         <>
-            <Box component="form" id="login-form" sx={{display:'flex',flexDirection:'column',gap:'10px'}} onSubmit={loginSubmit}>
+            <Box component="form" id="login-form" sx={{display:'flex',flexDirection:'column',gap:'10px',width:'300px'}} onSubmit={loginSubmit}>
                 <TextField required type="text" label={translate("usernameField")}onChange={(e) => setUsername(e.target.value)}/>
                 <TextField required type="password" label={translate("passwordField")} onChange={(e) => setPassword(e.target.value)}/>
                 <Button variant="outlined" type="submit">{translate("button")}</Button>
