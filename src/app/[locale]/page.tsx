@@ -1,33 +1,33 @@
 'use client'
 
-import { useDarkMode } from '@/global-states/darkMode';
-import { useTranslations } from 'next-intl';
+import { useAuth } from '@/global-states/auth';
+import LoginForm from '@/UI/LoginForm/LoginForm';
+import { Box, Button } from '@mui/material';
+import { useLocale, useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function Home() {
-  const translate = useTranslations('Home');
-  const { DarkMode, setDarkMode } = useDarkMode();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/test');
-        if (!response.ok) {
-          throw new Error('Error fetching data');
+  const router=useRouter();
+  const translate = useTranslations('Home');
+  const locale = useLocale();
+  const { userAuth} = useAuth();
+
+    useEffect(() => {
+        if (userAuth.isLoggedIn) {
+            router.push(`/${locale}/dashboard`);
         }
-        const data = await response.json();
-        console.log(data); // Procesa los datos como necesites
-      } catch (error) {
-        console.log('Error');
-      }
-    };
-  
-    fetchData();
-  }, []);
+    }, [userAuth.isLoggedIn]);
 
   return (
     <div>
       <h1>{translate("title")}</h1>
+      <LoginForm/>
+      <Box component="span">
+                <p>{translate("registerText")}</p>
+                <Button variant="outlined" onClick={()=>{router.push(`/${locale}/register`);}}>{translate("registerButton")}</Button>
+            </Box>
     </div>
   );
 }

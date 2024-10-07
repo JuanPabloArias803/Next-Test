@@ -1,9 +1,31 @@
 {
-    "Home":{
-        "title": "Test template"
+    "RegisterForm": {
+        "emailField": "Email",
+        "nameField": "Name",
+        "usernameField": "Username",
+        "phoneField": "Phone",
+        "passwordField": "Password",
+        "confirmPasswordField": "Confirm Password",
+        "button": "Register"
     },
 
-    "Login":{
-        "title":"Log in"
+    "LoginForm": {
+        "usernameField": "Username",
+        "passwordField": "Password",
+        "button": "Log In"
+    },
+
+    "Home": {
+        "title": "Test",
+        "registerText": "Do you not already have an account?",
+        "registerButton": "Register"
+    },
+
+    "RegisterView": {
+        "title": "Register"
+    },
+
+    "DashboardView": {
+        "title": "Dashboard"
     }
 }

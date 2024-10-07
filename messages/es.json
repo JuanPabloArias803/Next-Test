@@ -1,8 +1,31 @@
 {
-    "Home": {
-        "title": "Plantilla para la prueba de desempeño"
+    "RegisterForm": {
+        "emailField": "Correo Electrónico",
+        "nameField": "Nombre",
+        "usernameField": "Nombre de usuario",
+        "phoneField": "Teléfono",
+        "passwordField": "Contraseña",
+        "confirmPasswordField": "Confirmar Contraseña",
+        "button": "Registrarme"
     },
-    "Login": {
-        "title": "Iniciar Sesión"
+
+    "LoginForm": {
+        "usernameField": "Nombre de usuario",
+        "passwordField": "Contraseña",
+        "button": "Iniciar Sesión"
+    },
+
+    "Home": {
+        "title": "Prueba",
+        "registerText": "No tienes una cuenta aún?",
+        "registerButton": "Registrarse"
+    },
+
+    "RegisterView": {
+        "title": "Registro"
+    },
+
+    "DashboardView": {
+        "title": "Tablero"
     }
 }
