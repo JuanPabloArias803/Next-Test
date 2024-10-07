@@ -1,7 +1,9 @@
 'use client'
 
+import { IProduct } from '@/app/interfaces/product';
 import { useAuth } from '@/global-states/auth';
-import { Button, Typography } from '@mui/material';
+import { ProductCard } from '@/UI/ProductCard/ProductCard';
+import { Box, Button } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -11,11 +13,12 @@ export default function Dashboard() {
     const router=useRouter();
     const { userAuth, resetAuth} = useAuth();
     const translate = useTranslations('DashboardView');
-    const [data, setData] = useState("");
+    const [data, setData] = useState<IProduct[]>([]);
 
     useEffect(() => {
         if (!userAuth.isLoggedIn) {
             router.push('/');
+            return;
         }
         const getProducts =async ()=>{
             try {
@@ -30,6 +33,7 @@ export default function Dashboard() {
                     throw "Error en la conexión";
                 }
                 const responseData= await response.json();
+                console.log(responseData)
                 setData(responseData)
             } catch (error) {
                 alert(error);
@@ -42,9 +46,14 @@ export default function Dashboard() {
         <div>
             <h1>{translate("title")}</h1>
             <Button onClick={()=>{resetAuth()}}>cerrar sesion</Button>
-            <Typography>
-                {JSON.stringify(data)}
-            </Typography>
+            <Box component="span" sx={{display:"flex",gap:"10px", flexWrap:"wrap", justifyContent:"center"}}>
+            {data.map((item:IProduct)=>{
+                return (
+                <ProductCard key={item.id} description={item.description} category={item.category} title={item.title} imageUrl={item.image}></ProductCard>
+                );
+            })}
+            </Box>
         </div>
     );
 }
+

@@ -17,6 +17,7 @@ export default function Home() {
     useEffect(() => {
         if (userAuth.isLoggedIn) {
             router.push(`/${locale}/dashboard`);
+            return;
         }
     }, [userAuth.isLoggedIn]);
 

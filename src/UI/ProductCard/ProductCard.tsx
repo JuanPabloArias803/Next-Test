@@ -1,27 +1,32 @@
 import { Card, CardContent, CardHeader, CardMedia, Typography } from "@mui/material";
 
-export default function LoginForm() {
+interface CardProps{
+    description:string,
+    imageUrl:string,
+    title:string,
+    category:string
+}
 
+export const ProductCard:React.FC<CardProps>=({description,imageUrl,title,category})=>{
+    
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardHeader
-                title="Shrimp and Chorizo Paella"
-                subheader="September 14, 2016"
+                title={title}
+                subheader={`category: ${category}`}
             />
             <CardMedia
                 component="img"
                 height="194"
-                image="/static/images/cards/paella.jpg"
-                alt="Paella dish"
+                image={imageUrl}
             />
             <CardContent>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                This impressive paella is a perfect party dish and a fun meal to cook
-                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                if you like.
+                {description}
                 </Typography>
             </CardContent>
         </Card>
     );
 }
+
 
